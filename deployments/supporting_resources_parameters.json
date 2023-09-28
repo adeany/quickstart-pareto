@@ -1,0 +1,27 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "eventHubNamespaceName": {
+            "value":  "amdaruba19508"
+        },
+        "webPubSubName": {
+            "value": "amdpubsub2399"
+        },
+        "storageAccountName": {
+            "value": "amdarubastorage87262"
+        },
+        "functionName": {
+            "value": "amd-pareto-handler-function27"
+        },
+        "iotHubName": {
+            "value": "amdparetodemoIOTHub27"
+        },
+        "deviceProvisioningServiceName": {
+            "value": "amdparetodemoDPS27"
+        },
+        "eventHubName": {
+            "value": "amdarubahub20067"
+        }
+    }
+}
