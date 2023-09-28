@@ -390,7 +390,6 @@
                             "name": "FUNCTIONS_EXTENSION_VERSION",
                             "value": "~4"
                         },
-                        ,
                         {
                             "name": "SCM_DO_BUILD_DURING_DEPLOYMENT",
                             "value": true
