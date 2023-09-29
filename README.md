@@ -7,7 +7,7 @@ Getting Started
 This is a quickstart template that users can use to deploy __Pareto Anywhere for Azure__.
 It is an automated solution to walk through the step-by-step tutorial found [here](https://reelyactive.github.io/diy/pareto-anywhere-azure/).
 
-This template will the following resources: 
+This template will create the following resources: 
 * IoT Hub
 * Device Provisioning Service
 * Event Hubs Namespace
