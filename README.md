@@ -1,4 +1,4 @@
-Pareto Anywhere Quickstart
+Pareto Anywhere Quickstart - POC
 =========================
 
 Getting Started
