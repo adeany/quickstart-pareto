@@ -39,7 +39,6 @@
             }
         },
         "functionName": {
-            "defaultValue": "pareto-anywhere",
             "type": "string",
             "metadata": {
                 "description": "Specify the name of the Function App."
