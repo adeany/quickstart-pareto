@@ -193,7 +193,7 @@
                 "elasticScaleEnabled": true,
                 "maximumElasticWorkerCount": 1,
                 "isSpot": false,
-                "reserved": true,
+                "reserved": false,
                 "isXenon": false,
                 "hyperV": false,
                 "targetWorkerCount": 0,
