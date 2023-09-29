@@ -28,6 +28,7 @@ When you are ready to spin up this solution, deploy to Azure with to the button 
 
 [![Deploy to Azure](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fadeany%2Fquickstart-pareto%2Fmain%2Fdeployments%2Fsupporting_resources_template.json)
 
+After deployment is complete, you may browse to the web app on Azure by pointing a web browser to __https://app-name.azurewebsites.net/app/__, substituting app-name for the Function name you specified in the template.
 
 Developer Notes
 ---------------
