@@ -4,15 +4,37 @@ Pareto Anywhere Quickstart
 Getting Started
 ---------------
 
-1. Deploy the supporting Azure resources using the following template:
+This is a quickstart template that users can use to deploy __Pareto Anywhere for Azure__.
+It is an automated solution to walk through the step-by-step tutorial found [here](https://reelyactive.github.io/diy/pareto-anywhere-azure/).
+
+This template will the following resources: 
+* IoT Hub
+* Device Provisioning Service
+* Event Hubs Namespace
+* Event Hub
+* Shared Access Policy
+* Web PubSub
+* Storage Account
+* Function App 
+
+After the supporting infrastructure is created, the template will deploy the __Pareto Anywhere for Azure__ application code to the function app with the required settings and configuration.
+
+To use this solution, you will need the following:
+- An Azure account
+- An Azure Subscription
+- An Azure Resource Group
+
+When you are ready to spin up this solution, deploy to Azure with to the button below:
 
 [![Deploy to Azure](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fadeany%2Fquickstart-pareto%2Fmain%2Fdeployments%2Fsupporting_resources_template.json)
 
 
-2. Install node modules using Kudu
+Developer Notes
+---------------
 
-3. Check out your function app
-
+This template uses a zip file to deploy the Pareto Anywhere application code to Azure
+* The file is located in this repository and named `pareto-anywhere.zip`
+* The template references this zip using a variable named `functionPackageUri`. If you wish to change the location of the zip file containing the Pareto Anywhere application code, you must update this uri in the [ARM template](./deployments/supporting_resources_template.json).
 
 License
 -------
