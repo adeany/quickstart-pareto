@@ -5,13 +5,7 @@
         "iotHubName": {
             "type": "string",
             "metadata": {
-              "description": "Specify the name of the Iot hub."
-            }
-        },
-        "deviceProvisioningServiceName": {
-            "type": "string",
-            "metadata": {
-              "description": "Specify the name of the provisioning service."
+              "description": "Specify the name of the existing Iot hub."
             }
         },
         "eventHubNamespaceName": {
@@ -48,43 +42,9 @@
     "variables": {
         "planName": "[concat('pareto-anywhere-pln', uniqueString(resourceGroup().id))]", 
         "functionPackageUri": "https://raw.githubusercontent.com/adeany/quickstart-pareto/main/pareto-anywhere.zip",
-        "iotHubKey": "iothubowner",
-        "iotHubSkuName": "S1",
-        "iotHubSkuUnits": 1
+        "iotHubKey": "iothubowner"
     },
     "resources": [
-        {
-            "type": "Microsoft.Devices/IotHubs",
-            "apiVersion": "2021-07-02",
-            "name": "[parameters('iotHubName')]",
-            "location": "[resourceGroup().location]",
-            "sku": {
-              "name": "[variables('iotHubSkuName')]",
-              "capacity": "[variables('iotHubSkuUnits')]"
-            },
-            "properties": {}
-          },
-          {
-            "type": "Microsoft.Devices/provisioningServices",
-            "apiVersion": "2022-02-05",
-            "name": "[parameters('deviceProvisioningServiceName')]",
-            "location": "[resourceGroup().location]",
-            "sku": {
-              "name": "[variables('iotHubSkuName')]",
-              "capacity": "[variables('iotHubSkuUnits')]"
-            },
-            "properties": {
-              "iotHubs": [
-                {
-                  "connectionString": "[format('HostName={0};SharedAccessKeyName={1};SharedAccessKey={2}', reference(resourceId('Microsoft.Devices/IotHubs', parameters('iotHubName')), '2021-07-02').hostName, variables('iotHubKey'), listkeys(resourceId('Microsoft.Devices/IotHubs', parameters('iotHubName')), '2021-07-02').value[0].primaryKey)]",
-                  "location": "[resourceGroup().location]"
-                }
-              ]
-            },
-            "dependsOn": [
-              "[resourceId('Microsoft.Devices/IotHubs', parameters('iotHubName'))]"
-            ]
-        },
         {
             "type": "Microsoft.EventHub/namespaces",
             "apiVersion": "2023-01-01-preview",
@@ -324,7 +284,6 @@
             "name": "[parameters('functionName')]",
             "location": "[resourceGroup().location]",
             "dependsOn": [
-                "[resourceId('Microsoft.Devices/IotHubs', parameters('iotHubName'))]",
                 "[resourceId('Microsoft.EventHub/namespaces/eventhubs', parameters('eventHubNamespaceName'), parameters('eventHubName'))]",
                 "[resourceId('Microsoft.EventHub/namespaces', parameters('eventHubNamespaceName'))]",
                 "[resourceId('Microsoft.Web/serverfarms', variables('planName'))]",
