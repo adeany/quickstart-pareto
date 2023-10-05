@@ -52,22 +52,6 @@
             "dependsOn": [
               "[resourceId('Microsoft.Devices/IotHubs', parameters('iotHubName'))]"
             ]
-        },
-        {
-            "type": "Microsoft.Attestation/attestationProviders",
-            "apiVersion": "2021-06-01-preview",
-            "name": "string",
-            "location": "[resourceGroup().location]",
         }
-    ],
-    "outputs": {
-        "iot_hub": {
-            "type": "string",
-            "value": "[parameters('iotHubName')]"
-        },
-        "dps_props": {
-            "type": "string",
-            "value": "[reference(resourceId('Microsoft.Devices/provisioningServices', parameters('deviceProvisioningServiceName')), '2022-02-05').properties.IotDpsPropertiesDescription]"
-        }
-    }
+    ]
 }

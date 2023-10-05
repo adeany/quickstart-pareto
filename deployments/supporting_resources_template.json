@@ -462,23 +462,5 @@
                 "enabledProtocols": "SMB"
             }
         }
-    ],
-    "outputs": {
-        "iot_hub": {
-            "type": "string",
-            "value": "[parameters('iotHubName')]"
-        },
-        "event_hub_name": {
-            "type": "string",
-            "value": "[parameters('eventHubName')]"
-        },
-        "eventHubNamespaceName": {
-            "type": "string",
-            "value": "[parameters('eventHubNamespaceName')]"
-        },
-        "web_pub_sub_name": {
-            "type": "string",
-            "value": "[parameters('webPubSubName')]"
-        }
-    }
+    ]
 }

@@ -25,11 +25,3 @@ jobs:
         resourceGroupName: ${{ secrets.RESOURCE_GROUP }}
         template: ./deployments/supporting_resources_template.json
         parameters: ./deployments/supporting_resources_parameters.json
-
-    # output variables from template
-    - name: Print the outputs
-      shell: bash
-      run: |
-        echo "iot hub name = " ${{ steps.deploy.outputs.iot_hub }}
-        echo "event hub name = " ${{ steps.deploy.outputs.event_hub_name }}
-        echo "webpubsub name = " ${{ steps.deploy.outputs.web_pub_sub_name }}

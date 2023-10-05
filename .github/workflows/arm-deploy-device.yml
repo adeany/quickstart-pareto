@@ -25,10 +25,3 @@ jobs:
         resourceGroupName: ${{ secrets.RESOURCE_GROUP }}
         template: ./deployments/device_template.json
         parameters: ./deployments/device_parameters.json
-
-    # output variables from template
-    - name: Print the outputs
-      shell: bash
-      run: |
-        echo "iot hub name = " ${{ steps.deployIoT.outputs.iot_hub }}
-        echo "dps props = " ${{ steps.deployIoT.outputs.dps_props }}
