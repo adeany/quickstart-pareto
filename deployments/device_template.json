@@ -31,8 +31,8 @@
               "capacity": "[variables('iotHubSkuUnits')]"
             },
             "properties": {}
-          },
-          {
+        },
+        {
             "type": "Microsoft.Devices/provisioningServices",
             "apiVersion": "2022-02-05",
             "name": "[parameters('deviceProvisioningServiceName')]",
@@ -53,11 +53,5 @@
               "[resourceId('Microsoft.Devices/IotHubs', parameters('iotHubName'))]"
             ]
         }
-    ],
-    "outputs": {
-        "iot_hub": {
-            "type": "string",
-            "value": "[parameters('iotHubName')]"
-        }
-    }
+    ]
 }
