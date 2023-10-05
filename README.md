@@ -24,9 +24,13 @@ To use this solution, you will need the following:
 - An Azure Subscription
 - An Azure Resource Group
 
-When you are ready to spin up this solution, deploy to Azure with to the button below:
+When you are ready to configure the IoT Hub Service, DPS, and Enrollment Groups, deploy to Azure with to the button below:
 
-[![Deploy to Azure](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fadeany%2Fquickstart-pareto%2Fmain%2Fdeployments%2Fsupporting_resources_template.json)
+[![Deploy IoT Hub and DPS](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fadeany%2Fquickstart-pareto%2Fmain%2Fdeployments%2Fdevice_template.json)
+
+When you are ready to spin up Pareto Anywhere and the supporting resources, deploy to Azure with to the button below:
+
+[![Deploy Pareto Anywhere to Azure](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fadeany%2Fquickstart-pareto%2Fmain%2Fdeployments%2Fsupporting_resources_template.json)
 
 After deployment is complete, you may browse to the web app on Azure by pointing a web browser to __https://app-name.azurewebsites.net/app/__, substituting app-name for the Function name you specified in the template.
 
