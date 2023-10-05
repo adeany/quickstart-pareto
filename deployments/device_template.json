@@ -58,6 +58,10 @@
         "iot_hub": {
             "type": "string",
             "value": "[parameters('iotHubName')]"
+        },
+        "dps_props": {
+            "type": "string",
+            "value": "[reference(resourceId('Microsoft.Devices/provisioningServices', parameters('deviceProvisioningServiceName')), '2022-02-05').properties.IotDpsPropertiesDescription]"
         }
     }
 }

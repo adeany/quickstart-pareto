@@ -1,4 +1,4 @@
-name: Azure Pareto ARM Deployment - Devices
+name: Azure Pareto ARM Deployment - IoT Hub and DPS
 on:
   workflow_dispatch:
   
@@ -19,7 +19,7 @@ jobs:
     # https://github.com/marketplace/actions/deploy-azure-resource-manager-arm-template
     - name: Run ARM deploy
       uses: azure/arm-deploy@v1
-      id: deploy
+      id: deployIoT
       with:
         subscriptionId: ${{ secrets.SUBSCRIPTION_ID }}
         resourceGroupName: ${{ secrets.RESOURCE_GROUP }}
@@ -30,6 +30,5 @@ jobs:
     - name: Print the outputs
       shell: bash
       run: |
-        echo "iot hub name = " ${{ steps.deploy.outputs.iot_hub }}
-        echo "event hub name = " ${{ steps.deploy.outputs.event_hub_name }}
-        echo "webpubsub name = " ${{ steps.deploy.outputs.web_pub_sub_name }}
+        echo "iot hub name = " ${{ steps.deployIoT.outputs.iot_hub }}
+        echo "dps props = " ${{ steps.deployIoT.outputs.dps_props }}
