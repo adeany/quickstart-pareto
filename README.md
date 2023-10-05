@@ -7,7 +7,7 @@ Getting Started
 This is a quickstart template that users can use to deploy __Pareto Anywhere for Azure__.
 It is an automated solution to walk through the step-by-step tutorial found [here](https://reelyactive.github.io/diy/pareto-anywhere-azure/).
 
-This template will create the following resources: 
+The templates and workflows provided will create the following resources: 
 * IoT Hub
 * Device Provisioning Service
 * Event Hubs Namespace
@@ -17,17 +17,25 @@ This template will create the following resources:
 * Storage Account
 * Function App 
 
-After the supporting infrastructure is created, the template will deploy the __Pareto Anywhere for Azure__ application code to the function app with the required settings and configuration.
+After the supporting infrastructure is created, the template will also deploy the __Pareto Anywhere for Azure__ application code to the function app with the required settings and configuration.
 
 To use this solution, you will need the following:
 - An Azure account
 - An Azure Subscription
 - An Azure Resource Group
 
-When you are ready to configure the IoT Hub Service, DPS, and Enrollment Groups, deploy to Azure with to the button below:
+
+__Step 1: Configure IoT Hub and Device Provisioing Service__
+When you are ready to configure the IoT Hub Service and DPS, deploy to Azure with to the button below:
 
 [![Deploy IoT Hub and DPS](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fadeany%2Fquickstart-pareto%2Fmain%2Fdeployments%2Fdevice_template.json)
 
+__Step 2: Add Enrollment Group__
+After the IoT Hub and DPS are configured, you can add the enrollment group by kicking off the [Add Enrollment Group Github Action Workflow](https://github.com/adeany/quickstart-pareto/actions/workflows/add-enrollment-group.yml).
+* Make sure your inputs match the names of the DPS and IoT Hub resources that you specified in the template above
+* You can find the Aruba client side connection configuration variables in the `output` step of the workflow run
+
+__Step 3: Deploy Pareto Anywhere to Azure__
 When you are ready to spin up Pareto Anywhere and the supporting resources, deploy to Azure with to the button below:
 
 [![Deploy Pareto Anywhere to Azure](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fadeany%2Fquickstart-pareto%2Fmain%2Fdeployments%2Fsupporting_resources_template.json)
