@@ -10,10 +10,10 @@ on:
         description: 'IOT Hub Name'
         required: true
         default: 'amdparetodemoIOTHub27'
-      enrollment_id:
-        description: 'Enrollment ID'
+      enrollment_group_name:
+        description: 'Enrollment Group Name'
         required: true
-        default: 'amdparetoenrollmentgroup'
+        default: 'pareto-anywhere-eg'
 
 # Environment Variables
 env:
@@ -45,5 +45,5 @@ jobs:
     - name: Print Device Connection data
       shell: bash
       run: |
-        echo "Primary Key: $(az iot dps policy show --dps-name ${{ github.event.inputs.dps_name }} --resource-group ${{ secrets.RESOURCE_GROUP}} --policy-name provisioningserviceowner --query primaryKey )"
+        echo "Primary Key: $(az iot dps enrollment-group show --dps-name ${{ github.event.inputs.dps_name }} --resource-group ${{ secrets.RESOURCE_GROUP}} --enrollment-id ${{ github.event.inputs.enrollment_id }} --keys true --query primaryKey )"
         echo "ID Scope: $(az iot dps show --name ${{ github.event.inputs.dps_name }} --resource-group ${{ secrets.RESOURCE_GROUP}} --query properties.idScope -o tsv)"

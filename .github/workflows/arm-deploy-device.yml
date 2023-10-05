@@ -1,4 +1,4 @@
-name: Azure Pareto ARM Deployment - IoT Hub and DPS
+name: Deploy IoT Hub and DPS
 on:
   workflow_dispatch:
   
