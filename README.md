@@ -33,7 +33,7 @@ When you are ready to configure the IoT Hub Service and DPS, deploy to Azure wit
 __Step 2: Add Enrollment Group__
 After the IoT Hub and DPS are configured, you can add the enrollment group by kicking off the [Add Enrollment Group Github Action Workflow](https://github.com/adeany/quickstart-pareto/actions/workflows/add-enrollment-group.yml).
 * Make sure your inputs match the names of the DPS and IoT Hub resources that you specified in the template above
-* You can find the Aruba client side connection configuration variables in the `output` step of the workflow run
+* You can find the Aruba client side connection configuration variables in the `Print Device Connection data` step of the workflow run
 
 __Step 3: Deploy Pareto Anywhere to Azure__
 When you are ready to spin up Pareto Anywhere and the supporting resources, deploy to Azure with to the button below:
