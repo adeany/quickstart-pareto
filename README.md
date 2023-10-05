@@ -25,17 +25,17 @@ To use this solution, you will need the following:
 - An Azure Resource Group
 
 
-__Step 1: Configure IoT Hub and Device Provisioing Service__
+### Step 1: Configure IoT Hub and Device Provisioing Service
 When you are ready to configure the IoT Hub Service and DPS, deploy to Azure with to the button below:
 
 [![Deploy IoT Hub and DPS](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fadeany%2Fquickstart-pareto%2Fmain%2Fdeployments%2Fdevice_template.json)
 
-__Step 2: Add Enrollment Group__
+### Step 2: Add Enrollment Group
 After the IoT Hub and DPS are configured, you can add the enrollment group by kicking off the [Add Enrollment Group Github Action Workflow](https://github.com/adeany/quickstart-pareto/actions/workflows/add-enrollment-group.yml).
 * Make sure your inputs match the names of the DPS and IoT Hub resources that you specified in the template above
 * You can find the Aruba client side connection configuration variables in the `Print Device Connection data` step of the workflow run
 
-__Step 3: Deploy Pareto Anywhere to Azure__
+### Step 3: Deploy Pareto Anywhere to Azure
 When you are ready to spin up Pareto Anywhere and the supporting resources, deploy to Azure with to the button below:
 
 [![Deploy Pareto Anywhere to Azure](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fadeany%2Fquickstart-pareto%2Fmain%2Fdeployments%2Fsupporting_resources_template.json)
