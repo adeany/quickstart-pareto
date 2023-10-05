@@ -1,4 +1,4 @@
-name: Azure Pareto ARM Deployment - Resources
+name: Azure Pareto ARM Deployment - Devices
 on:
   workflow_dispatch:
   
