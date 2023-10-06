@@ -19,10 +19,6 @@ on:
         required: true
         default: 'pareto-anywhere-eg'
 
-# Environment Variables
-env:
-  HUB_Config-dpsName: "Pareto-Deployment-Service"
-
 jobs:
   device-deployment-support:
     runs-on: ubuntu-latest
