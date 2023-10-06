@@ -2,6 +2,10 @@ name: Add IoT Hub, DPS, and Enrollment Group
 on:
   workflow_dispatch:
     inputs:
+      region:
+        description: 'Region'
+        required: true
+        default: 'westus'
       dps_name:  
         description: 'DPS Name'
         required: true
@@ -40,19 +44,19 @@ jobs:
     - name: Create IOT Hub
       shell: bash
       run: |
-        az iot hub create --name ${{ github.event.inputs.iot_hub_name }} --resource-group ${{ secrets.RESOURCE_GROUP}} --sku F1 --partition-count 2 --location ${{ secrets.AZURE_REGION }}
+        az iot hub create --name ${{ github.event.inputs.iot_hub_name }} --resource-group ${{ secrets.RESOURCE_GROUP}} --sku F1 --partition-count 2 --location ${{ github.event.inputs.region }}
 
     # Create Device in Hub
     - name: Create Device Provisioning Service
       shell: bash
       run: |
-        az iot hub device-identity create -d ${{ github.event.inputs.enrollment_group_name }} -n ${{ github.event.inputs.iot_hub_name }} -g ${{ secrets.RESOURCE_GROUP}}
+        az iot hub device-identity create -d ${{ github.event.inputs.enrollment_group_name }} -n ${{ github.event.inputs.iot_hub_name }} -g ${{ secrets.RESOURCE_GROUP }}
 
     # Create Device Provisioning Service Enrollment
     - name: Create Device Provisioning Service Enrollment
       shell: bash
       run: |
-        az iot dps create --name ${{ github.event.inputs.dps_name }} --resource-group ${{ secrets.RESOURCE_GROUP }} --location ${{ secrets.AZURE_REGION }}
+        az iot dps create --name ${{ github.event.inputs.dps_name }} --resource-group ${{ secrets.RESOURCE_GROUP }} --location ${{ github.event.inputs.region }}
 
     # Create Device Provisioning Service Enrollment Group
     - name: Create Device Provisioning Service Enrollment Group
