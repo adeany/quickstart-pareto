@@ -5,43 +5,55 @@
         "iotHubName": {
             "type": "string",
             "metadata": {
-              "description": "Specify the name of the existing Iot hub."
-            }
+              "description": "Name of the existing IoT Hub in this Resource Group."
+            },
+            "defaultValue": "[concat(resourceGroup().name, '-iot-hub')]"
         },
         "eventHubNamespaceName": {
             "type": "string",
             "metadata": {
-                "description": "Specify the name of the Event Hub Namespace."
-            }
+                "description": "Name of Event Hub Namespace to create."
+            },
+            "defaultValue": "[concat(resourceGroup().name, '-events')]"
         },
         "eventHubName": {
             "type": "string",
             "metadata": {
-                "description": "Specify the name of the Event Hub."
-            }
+                "description": "Name of Event Hub to create."
+            },
+            "defaultValue": "[concat(resourceGroup().name, '-event-hub')]"
         },
         "webPubSubName": {
             "type": "string",
             "metadata": {
-                "description": "Specify the name of the Web PubSub Service."
-            }
+                "description": "Name of Web PubSub to create."
+            },
+            "defaultValue": "[concat(replace(resourceGroup().name, '-', ''), 'wps')]"
         },
         "storageAccountName": {
             "type": "string",
             "metadata": {
-                "description": "Specify the name of the Storage Account."
-            }
+                "description": "Name of Storage Account to create."
+            },
+            "defaultValue": "[concat(replace(resourceGroup().name, '-', ''), 'storage')]"
         },
         "functionName": {
             "type": "string",
             "metadata": {
-                "description": "Specify the name of the Function App."
-            }
+                "description": "Name of Function App to create."
+            },
+            "defaultValue": "[concat(resourceGroup().name, '-pareto-anywhere')]"
+        },
+        "functionPackageUri": {
+            "type": "string",
+            "metadata": {
+                "description": "URI of function package to deploy (default recommended)."
+            },
+            "defaultValue": "https://raw.githubusercontent.com/adeany/quickstart-pareto/main/pareto-anywhere.zip"
         }
     },
     "variables": {
         "planName": "[concat('pareto-anywhere-pln', uniqueString(resourceGroup().id))]", 
-        "functionPackageUri": "https://raw.githubusercontent.com/adeany/quickstart-pareto/main/pareto-anywhere.zip",
         "iotHubKey": "iothubowner"
     },
     "resources": [
@@ -51,18 +63,13 @@
             "name": "[parameters('eventHubNamespaceName')]",
             "location": "[resourceGroup().location]",
             "sku": {
-                "name": "Standard",
-                "tier": "Standard",
+                "name": "Basic",
+                "tier": "Basic",
                 "capacity": 1
             },
             "properties": {
-                "minimumTlsVersion": "1.2",
-                "publicNetworkAccess": "Enabled",
-                "disableLocalAuth": false,
-                "zoneRedundant": false,
                 "isAutoInflateEnabled": false,
-                "maximumThroughputUnits": 0,
-                "kafkaEnabled": true
+                "maximumThroughputUnits": 0
             }
         },
         {
@@ -185,13 +192,8 @@
                 "[resourceId('Microsoft.EventHub/namespaces', parameters('eventHubNamespaceName'))]"
             ],
             "properties": {
-                "retentionDescription": {
-                    "cleanupPolicy": "Delete",
-                    "retentionTimeInHours": 168
-                },
-                "messageRetentionInDays": 7,
-                "partitionCount": 4,
-                "status": "Active"
+                "messageRetentionInDays": 1,
+                "partitionCount": 1
             }
         },
         {
@@ -365,7 +367,7 @@
                         "[concat('Microsoft.Web/sites/', parameters('functionName'))]"
                     ],
                     "properties": {
-                        "packageUri": "[variables('functionPackageUri')]"
+                        "packageUri": "[parameters('functionPackageUri')]"
                     }
                 }
             ]
@@ -385,17 +387,6 @@
                     "Send"
                 ]
             }
-        },
-        {
-            "type": "Microsoft.EventHub/namespaces/eventhubs/consumergroups",
-            "apiVersion": "2023-01-01-preview",
-            "name": "[concat(parameters('eventHubNamespaceName'), '/', parameters('eventHubName'), '/$Default')]",
-            "location": "[resourceGroup().location]",
-            "dependsOn": [
-                "[resourceId('Microsoft.EventHub/namespaces/eventhubs', parameters('eventHubNamespaceName'), parameters('eventHubName'))]",
-                "[resourceId('Microsoft.EventHub/namespaces', parameters('eventHubNamespaceName'))]"
-            ],
-            "properties": {}
         },
         {
             "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
