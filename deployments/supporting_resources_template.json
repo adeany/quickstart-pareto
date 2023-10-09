@@ -147,24 +147,13 @@
             "name": "[variables('planName')]",
             "location": "[resourceGroup().location]",
             "sku": {
-                "name": "EP1",
-                "tier": "ElasticPremium",
-                "size": "EP1",
-                "family": "EP",
+                "name": "S1",
+                "tier": "Standard",
                 "capacity": 1
             },
-            "kind": "elastic",
+            "kind": "linux",
             "properties": {
-                "perSiteScaling": false,
-                "elasticScaleEnabled": true,
-                "maximumElasticWorkerCount": 1,
-                "isSpot": false,
-                "reserved": false,
-                "isXenon": false,
-                "hyperV": false,
-                "targetWorkerCount": 0,
-                "targetWorkerSizeId": 0,
-                "zoneRedundant": false
+                "reserved": true
             }
         },
         {
