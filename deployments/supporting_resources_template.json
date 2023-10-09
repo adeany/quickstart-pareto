@@ -147,9 +147,9 @@
             "name": "[variables('planName')]",
             "location": "[resourceGroup().location]",
             "sku": {
-                "name": "S1",
-                "tier": "Standard",
-                "capacity": 1
+                "name": "Y1",
+                "tier": "Dynamic",
+                "capacity": 0
             },
             "kind": "linux",
             "properties": {
@@ -342,24 +342,14 @@
                         {
                             "name": "SCM_DO_BUILD_DURING_DEPLOYMENT",
                             "value": true
+                        },
+                        {
+                            "name": "WEBSITE_RUN_FROM_PACKAGE",
+                            "value": "[parameters('functionPackageUri')]"
                         }
                     ]
                 }
-            },
-            "resources": [
-                {
-                    "name": "ZipDeploy",
-                    "type": "Extensions",
-                    "location": "[resourceGroup().location]",
-                    "apiVersion": "2021-02-01",
-                    "dependsOn": [
-                        "[concat('Microsoft.Web/sites/', parameters('functionName'))]"
-                    ],
-                    "properties": {
-                        "packageUri": "[parameters('functionPackageUri')]"
-                    }
-                }
-            ]
+            }
         },
         {
             "type": "Microsoft.EventHub/namespaces/eventhubs/authorizationrules",
