@@ -347,6 +347,23 @@
             }
         },
         {
+            "type": "Microsoft.Resources/deploymentScripts",
+            "apiVersion": "2020-10-01",
+            "kind": "AzurePowerShell",
+            "name": "WaitSection",
+            "location": "[resourceGroup().location]",
+            "dependsOn": [
+              "[resourceId('Microsoft.Web/sites', parameters('functionName'))]"
+            ],
+            "properties": {
+              "azPowerShellVersion": "7.0",
+              "scriptContent": "start-sleep -Seconds 120",
+              "cleanupPreference": "Always",
+              "retentionInterval": "PT1H"
+            },
+            "timeout": "PT5M"
+        },
+        {
             "type": "Microsoft.Web/sites/extensions",
             "apiVersion": "2022-03-01",
             "name": "[format('{0}/{1}', parameters('functionName'), 'zipdeploy')]",
@@ -354,7 +371,8 @@
               "packageUri": "[parameters('functionPackageUri')]"
             },
             "dependsOn": [
-              "[resourceId('Microsoft.Web/sites', parameters('functionName'))]"
+              "[resourceId('Microsoft.Web/sites', parameters('functionName'))]",
+              "WaitSection"
             ]
         },
         {
