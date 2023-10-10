@@ -360,7 +360,7 @@
               "scriptContent": "start-sleep -Seconds 120",
               "cleanupPreference": "Always",
               "timeout": "PT5M"
-            },
+            }
         },
         {
             "type": "Microsoft.Web/sites/extensions",
