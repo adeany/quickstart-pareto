@@ -351,7 +351,7 @@
             "apiVersion": "2020-10-01",
             "kind": "AzurePowerShell",
             "name": "WaitSection",
-            "location": "[parameters('location')]",
+            "location": "[resourceGroup().location]",
             "dependsOn": [
               "[resourceId('Microsoft.Web/sites', parameters('functionName'))]"
             ],
