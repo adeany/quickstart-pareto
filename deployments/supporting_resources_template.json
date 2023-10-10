@@ -295,8 +295,8 @@
                             "value": "node"
                         },
                         {
-                            "name": "WEBSITE_ENABLE_SYNC_UPDATE_SITE",
-                            "value": false
+                            "name": "WEBSITE_START_SCM_WITH_PRELOAD",
+                            "value": true
                         },
                         {
                             "name": "WEBSITE_NODE_DEFAULT_VERSION",
