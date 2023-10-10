@@ -350,6 +350,10 @@
                         {
                             "name": "WEBSITE_RUN_FROM_PACKAGE",
                             "value": "[parameters('functionPackageUri')]"
+                        },
+                        {
+                            "name": "ENABLE_ORYX_BUILD",
+                            "value": true
                         }
                     ]
                 }
