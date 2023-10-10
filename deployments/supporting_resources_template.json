@@ -289,6 +289,7 @@
                 "reserved": true,
                 "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('planName'))]",
                 "siteConfig": {
+                    "linuxFxVersion": "node|18",
                     "appSettings": [
                         {
                             "name": "FUNCTIONS_WORKER_RUNTIME",
