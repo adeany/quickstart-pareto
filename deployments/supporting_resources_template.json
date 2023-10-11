@@ -147,13 +147,13 @@
             "name": "[variables('planName')]",
             "location": "[resourceGroup().location]",
             "sku": {
-                "name": "Y1",
-                "tier": "Dynamic",
-                "size": "Y1",
-                "family": "Y",
-                "capacity": 1
+                "name": "EP1",
+                "tier": "ElasticPremium",
+                "size": "EP1",
+                "family": "EP"
             },
             "properties": {
+                "computeMode": "Dynamic",
                 "reserved": true
             }
         },
@@ -344,11 +344,11 @@
                         },
                         {
                             "name": "SCM_DO_BUILD_DURING_DEPLOYMENT",
-                            "value": true
+                            "value": "true"
                         },
                         {
                             "name": "ENABLE_ORYX_BUILD",
-                            "value": true
+                            "value": "true"
                         }
                     ]
                 }
