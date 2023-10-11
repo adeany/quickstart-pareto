@@ -147,10 +147,10 @@
             "name": "[variables('planName')]",
             "location": "[resourceGroup().location]",
             "sku": {
-                "name": "Y1",
-                "tier": "Dynamic",
-                "size": "Y1",
-                "family": "Y"
+                "name": "EP1",
+                "tier": "ElasticPremium",
+                "size": "EP1",
+                "family": "EP"
             },
             "properties": {
                 "computeMode": "Dynamic",
